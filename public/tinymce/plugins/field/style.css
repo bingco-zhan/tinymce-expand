@@ -1,0 +1,33 @@
+.mce-field {
+    font-size: 12px;
+    color: #797979;
+    border: 1px solid #797979;
+    outline: 0;
+}
+
+.mce-field_selected {
+    box-shadow: 2px 2px 3px #808992;
+}
+
+*::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: #cccccc;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #989898;
+}
+
+.mce-button {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    outline: 0;
+    background-color: white;
+    cursor: pointer;
+    padding: 2px 8px;
+    margin: 2px 0;
+}
