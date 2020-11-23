@@ -248,6 +248,8 @@
 
         // 拓展table插件
         if (editor.hasPlugin('table')) {
+            const { contextToolbars, menuItems } = editor.ui.registry.getAll()
+
             /**
              * start | 点击表格显示上下文菜单增强与控制
              */
@@ -262,7 +264,6 @@
                 type: 'contexttoolbar'
             })
             // 禁用表格原始上下文菜单
-            const { contextToolbars, menuItems } = editor.ui.registry.getAll()
             const predicate = contextToolbars.table.predicate
             contextToolbars.table.predicate = function (table) {
                 return predicate(table) && !isInnerTable(table)
@@ -290,8 +291,6 @@
             menuItems.tableinsertrowafter.onSetup = (api) => over(api, onSetup$3)
             menuItems.tablecutrow.onSetup = (api) => over(api, onSetup$4)
             /* end */
-
-            console.log('menuItems', menuItems)
         }
 
         // 拓展模板插件
@@ -300,12 +299,7 @@
             if (templa) {
                 templates.forEach(item => templa.push(item))
             }
-            const mceinserttemplate = editor.editorCommands.commands.exec.mceinserttemplate
-            editor.editorCommands.commands.exec.mceinserttemplate = function (command, ui, value, args) {
-                return mceinserttemplate(command, ui, value, args)
-            }
         }
-
     }
 
 
