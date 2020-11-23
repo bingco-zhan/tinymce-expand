@@ -4,13 +4,13 @@
     const global = tinymce.util.Tools.resolve('tinymce.PluginManager')
     const $promise = tinymce.util.Tools.resolve('tinymce.util.Promise')
     const DOMUtils = tinymce.util.Tools.resolve('tinymce.dom.DOMUtils');
-    let $ = undefined
+    let $ = undefined, empty = ''
 
 
     const templates = [
         {
             title: '明细表格',
-            description: '明细表格模板',
+            description: '【明细表格】模板',
             content: '<table data-mce-class="mce-item-table" style="border-collapse: collapse; width: 100%;" border="1"> \
                 <caption style="text-align: right"><button class="mce-button">添加</button> <button class="mce-button">删除</button></caption> \
                 <tbody> \
@@ -28,12 +28,134 @@
                 </tr> \
                 </tbody> \
                 </table>'
+        }, {
+            title: '模板流程①',
+            description: '【主体+明细表格】模板',
+            content: '<h1 style="text-align: center;"><span style="color: #34495e;">模板流程</span></h1> \
+                <br /> \
+                <table style="border-collapse: collapse; width: 776px; margin-left: auto; margin-right: auto; height: 46px;" border="1"> \
+                <tbody> \
+                <tr style="height: 23px;"> \
+                <td style="width: 55px; height: 23px; text-align: center; background-color: #c4f2f7;">&nbsp;</td> \
+                <td style="width: 132px; height: 23px;">&nbsp;</td> \
+                <td style="width: 57px; height: 23px; text-align: center; background-color: #c4f2f7;">&nbsp;</td> \
+                <td style="width: 146px; height: 23px;">&nbsp;</td> \
+                <td style="width: 62px; height: 23px; background-color: #c4f2f7; text-align: center;">&nbsp;</td> \
+                <td style="width: 262px; height: 23px;">&nbsp;</td> \
+                </tr> \
+                <tr style="height: 23px;"> \
+                <td style="width: 55px; height: 23px; text-align: center; background-color: #c4f2f7;">&nbsp;</td> \
+                <td style="width: 132px; height: 23px;">&nbsp;</td> \
+                <td style="width: 57px; height: 23px; text-align: center; background-color: #c4f2f7;">&nbsp;</td> \
+                <td style="height: 23px;" colspan="3">&nbsp;</td> \
+                </tr> \
+                <tr> \
+                <td style="width: 55px;" colspan="6"> \
+                <table style="border-collapse: collapse; width: 100%;" border="1" data-mce-class="mce-item-table"><caption style="text-align: right;"><button class="mce-button">添加</button> <button class="mce-button">删除</button></caption> \
+                <tbody> \
+                <tr> \
+                <th style="width: 23.6263%; background-color: #c4f2f7;">&nbsp;</th> \
+                <th style="width: 23.7192%; background-color: #c4f2f7;">&nbsp;</th> \
+                <th style="width: 23.7192%; background-color: #c4f2f7;">&nbsp;</th> \
+                <th style="width: 23.7192%; background-color: #c4f2f7;">&nbsp;</th> \
+                </tr> \
+                <tr> \
+                <td style="width: 23.6263%;">&nbsp;</td> \
+                <td style="width: 23.7192%;">&nbsp;</td> \
+                <td style="width: 23.7192%;">&nbsp;</td> \
+                <td style="width: 23.7192%;">&nbsp;</td> \
+                </tr> \
+                </tbody> \
+                </table> \
+                </td> \
+                </tr> \
+                </tbody> \
+                </table>'
+        }, {
+            title: '模板流程②',
+            description: '【主体+明细表+侧边面板】模板',
+            content: '<table style="border-collapse: collapse; width: 1296px; margin-left: auto; margin-right: auto; height: 338px;"> \
+                <tbody> \
+                <tr style="height: 86px;"> \
+                <td style="width: 1254px; vertical-align: top; height: 86px;" colspan="3"> \
+                <h1 style="text-align: center;"><span style="color: #34495e;">模板流程</span></h1> \
+                </td> \
+                </tr> \
+                <tr style="height: 252px;"> \
+                <td style="width: 417.667px; vertical-align: top; height: 252px;"> \
+                <table style="border-collapse: collapse; width: 190px; height: 261px; float: right;" border="1"> \
+                <tbody> \
+                <tr style="height: 21px;"> \
+                <td style="width: 206px; height: 21px;">&nbsp;</td> \
+                </tr> \
+                <tr style="height: 215px;"> \
+                <td style="width: 206px; height: 241px;">&nbsp;</td> \
+                </tr> \
+                </tbody> \
+                </table> \
+                </td> \
+                <td style="width: 417.667px; vertical-align: top; height: 252px;"> \
+                <table style="border-collapse: collapse; width: 776px; margin-left: auto; margin-right: auto; height: 316px;" border="1"> \
+                <tbody> \
+                <tr style="height: 23px;"> \
+                <td style="width: 55px; height: 23px; text-align: center; background-color: #c4f2f7;">&nbsp;</td> \
+                <td style="width: 132px; height: 23px;">&nbsp;</td> \
+                <td style="width: 57px; height: 23px; text-align: center; background-color: #c4f2f7;">&nbsp;</td> \
+                <td style="width: 146px; height: 23px;">&nbsp;</td> \
+                <td style="width: 62px; height: 23px; background-color: #c4f2f7; text-align: center;">&nbsp;</td> \
+                <td style="width: 262px; height: 23px;">&nbsp;</td> \
+                </tr> \
+                <tr style="height: 23px;"> \
+                <td style="width: 55px; height: 23px; text-align: center; background-color: #c4f2f7;">&nbsp;</td> \
+                <td style="width: 132px; height: 23px;">&nbsp;</td> \
+                <td style="width: 57px; height: 23px; text-align: center; background-color: #c4f2f7;">&nbsp;</td> \
+                <td style="height: 23px; width: 470px;" colspan="3">&nbsp;</td> \
+                </tr> \
+                <tr style="height: 270px;"> \
+                <td style="width: 714px; height: 270px; vertical-align: top;" colspan="6"> \
+                <table style="border-collapse: collapse; width: 100%;" border="1" data-mce-class="mce-item-table"><caption style="text-align: right;"><button class="mce-button">添加</button> <button class="mce-button">删除</button></caption> \
+                <tbody> \
+                <tr> \
+                <th style="width: 23.6263%; background-color: #c4f2f7;">&nbsp;</th> \
+                <th style="width: 23.7192%; background-color: #c4f2f7;">&nbsp;</th> \
+                <th style="width: 23.7192%; background-color: #c4f2f7;">&nbsp;</th> \
+                <th style="width: 23.7192%; background-color: #c4f2f7;">&nbsp;</th> \
+                </tr> \
+                <tr> \
+                <td style="width: 23.6263%;">&nbsp;</td> \
+                <td style="width: 23.7192%;">&nbsp;</td> \
+                <td style="width: 23.7192%;">&nbsp;</td> \
+                <td style="width: 23.7192%;">&nbsp;</td> \
+                </tr> \
+                </tbody> \
+                </table> \
+                </td> \
+                </tr> \
+                </tbody> \
+                </table> \
+                </td> \
+                <td style="width: 418.667px; vertical-align: top; height: 252px;"> \
+                <table style="border-collapse: collapse; width: 190px; height: 261px;" border="1"> \
+                <tbody> \
+                <tr style="height: 21px;"> \
+                <td style="width: 190px; height: 21px;">&nbsp;</td> \
+                </tr> \
+                <tr style="height: 201px;"> \
+                <td style="width: 190px; height: 240px;">&nbsp;</td> \
+                </tr> \
+                </tbody> \
+                </table> \
+                </td> \
+                </tr> \
+                </tbody> \
+                </table>'
         }
     ]
 
 
     const Fn = () => {}
     const FnIf = (flag, fn1 = Fn, fn2 = Fn) => flag ? fn1() : fn2()
+    const IsEmpty = (string) => { return !(!!string && string.trim().length > 0) }
 
 
     function uuid() {
@@ -53,9 +175,16 @@
         return {
             type: 'panel',
             items: [
-                { type: 'input', name: 'name', label: 'name',disabled: true },
-                { type: 'input', name: 'field', label: 'field',disabled: true },
-                { type: 'sizeinput', name: 'size', label: 'size' }
+                {
+                    type: 'grid',
+                    columns: 2,
+                    items: [
+                        { type: 'input', name: 'name', label: 'name', disabled: true },
+                        { type: 'input', name: 'field', label: 'field', disabled: true },
+                        { type: 'input', name: 'width', label: 'width' },
+                        { type: 'checkbox', name: 'readonly', label: 'Read only' }
+                    ]
+                }
             ]
         }
     }
@@ -79,72 +208,88 @@
 
     /** 构建模态框 */
     function makeDialog(helper) {
-        return function (data) {
-            return {
-                ...helper,
-                initialData: data
-            }
-        }
-    }
-
-    function collect(data) {
-        const input = $('.mce-field_selected')[0]
-        const _data = {
-            name: data.name || input.getAttribute('data-mce-name'),
-            field: data.field || input.name,
-            size: {
-                width: input.style.width,
-                height: input.style.height
-            }
-        }
-        return new $promise((resolve) => {resolve(_data)})
+        return new $promise((resolve) => {
+            const input = $('.mce-field_selected')[0]
+            const cache = JSON.parse(input.getAttribute('data-mce-cache') || '{}')
+            resolve({
+                ...helper.content,
+                initialData: {...helper.data, ...cache}
+            })
+        })
     }
 
     function dialog(editor) {
         const helper = {
-            title: 'Insert/edit field',
-            size: 'normal',
-            type: 'panel',
-            body: makeBody(),
-            buttons: makeButton(),
-            onSubmit: submit(editor)
+            content: {
+                title: 'Insert/edit field',
+                size: 'normal',
+                type: 'panel',
+                body: makeBody(),
+                buttons: makeButton(),
+                onSubmit: submit(editor)
+            }
         }
         return {
             open(data = {}) {
-                collect(data).then(makeDialog(helper)).then(editor.windowManager.open)
+                helper.data = data
+                makeDialog(helper).then(editor.windowManager.open)
             }
         }
     }
 
-    /** 更新node */
-    function insertOrUpdateField(editor, data) {
+    function validator(editor, data) {
         const parentDOMs = DOMUtils.DOM.getParents(editor.selection.getNode())
         const table = parentDOMs.filter(d => d.nodeName.match(/table/i))[0]
         if (!isInnerTable(table)) {
             if (data.ischild) {
                 editor.windowManager.alert('非明细表格不能添加明细字段,请在模板中选择!!')
-                return
+                return false
             }
         } else {
             if (!data.ischild) {
                 editor.windowManager.alert('明细表格中不能添加主表字段!!')
                 return
             }
-        }
+            const th = parentDOMs.filter(d => d.nodeName.match(/th/i))[0]
+            if (th) {
+                editor.windowManager.alert('明细表格中表头不能添加字段!!')
+                return false
+            }
 
-        console.log(data)
+            editor.dom.setAttrib(table, 'data-mce-field', data['mainField'].field)
+        }
+        return true
+    }
+
+    /** 更新node */
+    function insertOrUpdateField(editor, data) {
+        if (!validator(editor, data)) {
+            return
+        }
         const selected = $('.mce-field_selected')
-        const { width, height } = data.size || { height: '20px', width: '130px' }
+        data.width = data.width || '130px'
+        let mainField = '', field
+        const cache = JSON.parse(selected[0] ? selected[0].getAttribute('data-mce-cache') : '{}')
+        data = {...data, ...cache}
+        function genAlt(data) {
+            if (data.mainField) {
+                mainField = `${data.mainField.name} / `
+            }
+            field = `${data.name} ${data.readonly ? '[只读]' : empty}`
+            return mainField + field
+        }
         const name = data.field,
             args = {
                 name,
                 id: `field_${uuid()}`,
+                alt: genAlt(data),
                 class: 'mce-field',
-                readonly: 'readonly',
-                value: `${data.name} [只读]`,
-                'data-mce-name': data.name,
-                style: `width: ${width}; height: ${height}`
+                readonly: empty,
+                value: `${data.name} ${data.readonly ? '[只读]' : empty}`,
+                'data-mce-cache': JSON.stringify(data),
+                style: `width: ${data.width}; height: 18px`
             }
+
         const input = editor.dom.createHTML('input', args)
         FnIf(selected.length > 0, () => {
             editor.selection.select(selected[0])
@@ -156,7 +301,7 @@
 
     /** 选中节点 */
     function selected(node) {
-        FnIf(!node, Fn, () => {
+        FnIf(node, () => {
             node.classList.add('mce-field_selected')
         })
     }
@@ -182,7 +327,8 @@
 
     function setup(editor, baseUrl) {
         editor.contentCSS.push(baseUrl + '/style.css')
-        editor.addCommand('mceField', function (ui, data) { dialog(editor).open(data) })
+        editor.addCommand('mceField', function (ui, data) {
+            dialog(editor).open(data) })
         editor.addCommand('mceUpdateField', function (ui, data) {
             editor.undoManager.transact(function () {
                 return insertOrUpdateField(editor, data)
@@ -192,7 +338,7 @@
 
 
     function register(editor) {
-        $ = (function (selector) {return tinymce.dom.DomQuery(selector, editor.contentDocument)})
+        $ = (function (selector, document = editor.contentDocument) {return tinymce.dom.DomQuery(selector, document)})
 
         // 注册头部按钮
         editor.ui.registry.addToggleButton('field', {
@@ -212,6 +358,32 @@
             if(isField(e.target)) {
                 selected(e.target)
                 editor.execCommand('mceField')
+            }
+        })
+
+        editor.on('mouseover', function (e) {
+            if(isField(e.target) && !IsEmpty(e.target.alt)) {
+                const span = document.createElement('span')
+                span.innerText = e.target.alt
+                span.id = 'alt'
+                span.style.position = 'absolute'
+                span.style.top = (e.clientY + 78) + 'px'
+                span.style.left = e.clientX + 'px'
+                span.style.border = '1px solid'
+                span.style.fontSize = '10px'
+                span.style.padding = '2px 4px'
+                span.style.position = 'absolute'
+                span.style.backgroundColor = 'white'
+                span.style.zIndex = '100'
+                editor.editorContainer.appendChild(span)
+            }
+        })
+
+        console.log(editor)
+
+        editor.on('mouseout', function (e) {
+            if(isField(e.target)) {
+                $('#alt', editor.editorContainer).remove()
             }
         })
 

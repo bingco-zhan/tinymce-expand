@@ -11,10 +11,11 @@
            link unlink image code | undo redo',
           branding: true,
           init_instance_callback: init,
-          templates: []
+          templates: [],
+          forced_root_block : ''
         }" v-model="content" />
       </td>
-      <td>
+      <td width="230px">
         <div v-show="initialize" class="editor-props">
           <div title="主表" class="main-field">
             <a :title="`${item.name} [${item.field}]`" v-for="(item, index) in info.main"
@@ -28,7 +29,7 @@
           <div v-if="info.item && info.item[selected]" title="明细表" class="main-item-field">
             <a :title="`${item.name} [${item.field}]`" v-for="(item, index) in info.item[selected]" class="main-item-field-item"
                :key="index"
-               @dblclick="insertField(item, true)">
+               @dblclick="insertField({ ...item, mainField: getMainField()}, true)">
               {{item.name}}
             </a>
           </div>
@@ -64,6 +65,11 @@ export default {
       this.initialize = true
       this.mainInfo()
     },
+    getMainField() {
+      if (this.selected !== '') {
+        return this.info.main.filter(i => i.field === this.selected)[0]
+      }
+    },
     mainInfo() {
       axios.post('/mainInfo').then(res => {
         const {code, data} = res.data
@@ -73,9 +79,7 @@ export default {
       })
     },
     insertField(data, ischild) {
-      if(!data.child) {
         this.$refs.editor.editor.execCommand('mceUpdateField', false, {...data, ischild})
-      }
     }
   },
   created() {

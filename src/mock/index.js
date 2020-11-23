@@ -31,23 +31,23 @@ import Mock from 'mockjs'
 Mock.mock('/mainInfo', 'post', function () {
     const data = {
         main: [
-            { field: 'id', name: 'ID'},
-            { field: 'name', name: '名称'},
-            { field: 'date', name: '日期'},
-            { field: 'city', name: '城市'},
-            { field: 'address', name: '地址'},
-            { field: 'email', name: '邮箱'},
-            { field: 'zip', name: '邮编'},
+            { field: 'id', name: 'ID', type: 'text'},
+            { field: 'name', name: '名称', type: 'text'},
+            { field: 'date', name: '日期', type: 'date'},
+            { field: 'city', name: '城市', type: 'select'},
+            { field: 'address', name: '地址', type: 'textArea'},
+            { field: 'email', name: '邮箱', type: 'text'},
+            { field: 'zip', name: '邮编', type: 'number'},
             { field: 'order', name: '订单', child: true }
         ],
         item: {
             order: [
-                { field: 'id', name: 'ID'},
-                { field: 'docno', name: '订单编号'},
-                { field: 'date', name: '日期'},
-                { field: 'itemCode', name: '料品编号'},
-                { field: 'itemName', name: '料品名称'},
-                { field: 'price', name: '价格'}
+                { field: 'id', name: 'ID', type: 'text'},
+                { field: 'docno', name: '订单编号', type: 'text'},
+                { field: 'date', name: '日期', type: 'date'},
+                { field: 'itemCode', name: '料品编号', type: 'text'},
+                { field: 'itemName', name: '料品名称', type: 'text'},
+                { field: 'price', name: '价格', type: 'number'}
             ]
         }
     }
